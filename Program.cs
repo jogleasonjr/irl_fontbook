@@ -57,9 +57,15 @@ namespace irl_fontbook
 			</table>
 			</html>
 			");
+			
+            var htmlFile = new FileInfo(Path.Combine(Path.GetTempPath(), $"irl_fontbook.html"));
+            
+			if(htmlFile.Exists)
+			{
+				htmlFile.Delete();
+			}
 
-            var htmlFile = new FileInfo(Path.Combine(Path.GetTempPath(), $"irl_fontbook_{DateTime.Now.Ticks}.html"));
-            File.WriteAllText(htmlFile.FullName, sb.ToString());
+			File.WriteAllText(htmlFile.FullName, sb.ToString());
             Console.WriteLine(htmlFile.FullName);
         }
     }
